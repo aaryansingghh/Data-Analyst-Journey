@@ -121,3 +121,23 @@ GROUP BY customer_id;
 Learning:
 When two tables contain the same column name, specify the table name (e.g., Visits.visit_id).
 
+## Problem 9: Rising Temperature
+
+Concepts:
+
+* Self Join
+* DATEDIFF()
+
+Query:
+
+SELECT w1.id
+FROM Weather w1
+JOIN Weather w2
+ON DATEDIFF(w1.recordDate, w2.recordDate) = 1
+WHERE w1.temperature > w2.temperature;
+
+Learning:
+
+* Same table can be joined with itself.
+* DATEDIFF() compares dates.
+* Find days where temperature is higher than the previous day.
