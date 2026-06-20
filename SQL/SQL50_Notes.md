@@ -71,3 +71,53 @@ Query:
 SELECT tweet_id
 FROM Tweets
 WHERE LENGTH(content) > 15;
+
+## Problem 6: Replace Employee ID With The Unique Identifier
+
+Concepts:
+
+* LEFT JOIN
+
+Query:
+SELECT unique_id, name
+FROM Employees
+LEFT JOIN EmployeeUNI
+ON Employees.id = EmployeeUNI.id;
+
+---
+
+## Problem 7: Product Sales Analysis I
+
+Concepts:
+
+* INNER JOIN
+
+Query:
+SELECT product_name, year, price
+FROM Sales
+INNER JOIN Product
+ON Sales.product_id = Product.product_id;
+
+---
+
+## Problem 8: Customer Who Visited but Did Not Make Any Transactions
+
+Concepts:
+
+* LEFT JOIN
+* IS NULL
+* COUNT()
+* GROUP BY
+
+Query:
+SELECT customer_id,
+COUNT(Visits.visit_id) AS count_no_trans
+FROM Visits
+LEFT JOIN Transactions
+ON Visits.visit_id = Transactions.visit_id
+WHERE transaction_id IS NULL
+GROUP BY customer_id;
+
+Learning:
+When two tables contain the same column name, specify the table name (e.g., Visits.visit_id).
+
