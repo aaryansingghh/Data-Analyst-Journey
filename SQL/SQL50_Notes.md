@@ -141,3 +141,28 @@ Learning:
 * Same table can be joined with itself.
 * DATEDIFF() compares dates.
 * Find days where temperature is higher than the previous day.
+
+## Problem 10: Average Time of Process per Machine
+
+Concepts:
+
+* Self Join
+* AVG()
+* ROUND()
+* GROUP BY
+
+Query:
+
+Select a.machine_id,round(avg(b.timestamp - a.timestamp), 3) as processing_time
+from Activity a join Activity b
+on a.machine_id = b.machine_id and a.process_id = b.process_id
+where a.activity_type = 'start' and b.activity_type = 'end'
+group by  a.machine_id
+
+Learning:
+
+* Same table can be joined with itself using Self Join.
+* Match start and end records using machine_id and process_id.
+* Processing Time = end_timestamp - start_timestamp.
+* Use AVG() to find average processing time.
+* Use ROUND(..., 3) to show 3 decimal places.
