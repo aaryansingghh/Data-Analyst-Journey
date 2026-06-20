@@ -1,2 +1,17 @@
 # Data-Analyst-Journey
-My journey to become a Data Analyst. Learning SQL, Power BI, Excel and Python.
+Welcome to my Data Analytics learning journey.
+
+## Skills
+- SQL
+- Power BI
+- Excel
+- Python (Learning)
+
+## Repository Structure
+- SQL Practice & LeetCode Solutions
+- Power BI Dashboards
+- Excel Projects
+- Python Data Analysis Projects
+
+## Goal
+To become a Data Analyst and continuously improve my analytical and problem-solving skills.
