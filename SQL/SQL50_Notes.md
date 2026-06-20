@@ -9,10 +9,10 @@ Concepts:
 * AND
 
 Query:
-SELECT product_id
-FROM Products
-WHERE low_fats = 'Y'
-AND recyclable = 'Y';
+Select product_id
+from Products
+where low_fats = 'Y'
+and recyclable = 'Y';
 
 ---
 
@@ -24,10 +24,10 @@ Concepts:
 * IS NULL
 
 Query:
-SELECT name
-FROM Customer
-WHERE referee_id <> 2
-OR referee_id IS NULL;
+Select name
+from Customer
+where referee_id <> 2
+or referee_id IS NULL;
 
 ---
 
@@ -39,10 +39,10 @@ Concepts:
 * Numeric filtering
 
 Query:
-SELECT name, population, area
-FROM World
-WHERE area >= 3000000
-OR population >= 25000000;
+Select name, population, area
+from World
+where area >= 3000000
+or population >= 25000000;
 
 ---
 
@@ -54,10 +54,10 @@ Concepts:
 * AS (Alias)
 
 Query:
-SELECT DISTINCT author_id AS id
-FROM Views
-WHERE author_id = viewer_id
-ORDER BY author_id;
+Select DISTINCT author_id AS id
+from Views
+where author_id = viewer_id
+order by author_id;
 
 ---
 
@@ -68,9 +68,9 @@ Concepts:
 * LENGTH()
 
 Query:
-SELECT tweet_id
-FROM Tweets
-WHERE LENGTH(content) > 15;
+Select tweet_id
+from Tweets
+where LENGTH(content) > 15;
 
 ## Problem 6: Replace Employee ID With The Unique Identifier
 
@@ -79,10 +79,10 @@ Concepts:
 * LEFT JOIN
 
 Query:
-SELECT unique_id, name
-FROM Employees
-LEFT JOIN EmployeeUNI
-ON Employees.id = EmployeeUNI.id;
+Select unique_id, name
+from Employees
+left join EmployeeUNI
+on Employees.id = EmployeeUNI.id;
 
 ---
 
@@ -93,10 +93,10 @@ Concepts:
 * INNER JOIN
 
 Query:
-SELECT product_name, year, price
-FROM Sales
-INNER JOIN Product
-ON Sales.product_id = Product.product_id;
+Select product_name, year, price
+from Sales
+inner join Product
+on Sales.product_id = Product.product_id;
 
 ---
 
@@ -110,13 +110,13 @@ Concepts:
 * GROUP BY
 
 Query:
-SELECT customer_id,
-COUNT(Visits.visit_id) AS count_no_trans
-FROM Visits
-LEFT JOIN Transactions
-ON Visits.visit_id = Transactions.visit_id
-WHERE transaction_id IS NULL
-GROUP BY customer_id;
+Select customer_id,
+count(Visits.visit_id) as count_no_trans
+from Visits
+left join Transactions
+on Visits.visit_id = Transactions.visit_id
+where transaction_id IS NULL
+group by customer_id;
 
 Learning:
 When two tables contain the same column name, specify the table name (e.g., Visits.visit_id).
@@ -130,11 +130,11 @@ Concepts:
 
 Query:
 
-SELECT w1.id
-FROM Weather w1
-JOIN Weather w2
-ON DATEDIFF(w1.recordDate, w2.recordDate) = 1
-WHERE w1.temperature > w2.temperature;
+Select w1.id
+from Weather w1
+join Weather w2
+on DATEDIFF(w1.recordDate, w2.recordDate) = 1
+where w1.temperature > w2.temperature;
 
 Learning:
 
