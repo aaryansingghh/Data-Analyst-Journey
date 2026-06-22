@@ -238,3 +238,21 @@ Learning:
 * HAVING filters grouped results.
 * Group by unique IDs, not names.
 * Self Join can connect managers with employees.
+
+## Problem 14: Confirmation Rate
+
+Concepts:
+
+* LEFT JOIN
+* CASE WHEN
+* AVG()
+* ROUND()
+
+Query:
+
+
+
+Learning:
+
+* CASE WHEN converts text into numeric values.
+* AVG() can calculate confirmation rates directly.
