@@ -166,3 +166,25 @@ Learning:
 * Processing Time = end_timestamp - start_timestamp.
 * Use AVG() to find average processing time.
 * Use ROUND(..., 3) to show 3 decimal places.
+
+## Problem 11: Employee Bonus
+
+Concepts:
+
+* LEFT JOIN
+* IS NULL
+* OR
+
+Query:
+
+Select e.name,b.bonus 
+from Employee e 
+left join Bonus b 
+on e.empId=b.empId
+where b.Bonus < 1000 
+or b.Bonus is null
+
+Learning:
+
+* Use LEFT JOIN to keep employees without bonus records.
+* IS NULL helps find missing values.
