@@ -214,3 +214,27 @@ Learning:
 
 * CROSS JOIN creates all possible combinations.
 * COUNT() counts matching exam records.
+
+## Problem 13: Managers with at Least 5 Direct Reports
+
+Concepts:
+
+* Self Join
+* GROUP BY
+* HAVING
+* COUNT()
+
+Query:
+
+Select e1.name
+from Employee e1
+join Employee e2
+on e1.id=e2.managerId
+group by e1.id
+having count(*) >= 5;
+
+Learning:
+
+* HAVING filters grouped results.
+* Group by unique IDs, not names.
+* Self Join can connect managers with employees.
