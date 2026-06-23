@@ -261,3 +261,23 @@ Learning:
 
 * CASE WHEN converts text into numeric values.
 * AVG() can calculate confirmation rates directly.
+
+Problem 15: Not Boring Movies
+
+Concepts:
+• WHERE
+• AND
+• Modulus (%)
+• ORDER BY DESC
+
+Query:
+
+Select * from Cinema 
+where description != 'boring' and id % 2 = 1
+order by rating desc;
+
+Learning:
+Use % (modulus) to identify odd/even numbers.
+id % 2 = 1 → Odd IDs
+id % 2 = 0 → Even IDs
+ORDER BY DESC sorts highest values first.
