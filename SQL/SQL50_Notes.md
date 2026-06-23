@@ -262,7 +262,7 @@ Learning:
 * CASE WHEN converts text into numeric values.
 * AVG() can calculate confirmation rates directly.
 
-Problem 15: Not Boring Movies
+##Problem 15: Not Boring Movies
 
 Concepts:
 • WHERE
@@ -281,3 +281,29 @@ Use % (modulus) to identify odd/even numbers.
 id % 2 = 1 → Odd IDs
 id % 2 = 0 → Even IDs
 ORDER BY DESC sorts highest values first.
+
+## Problem 16: Average Selling Price
+
+Concepts:
+
+* LEFT JOIN
+* BETWEEN
+* SUM()
+* ROUND()
+* IFNULL()
+* Weighted Average
+
+Learning:
+
+* Use BETWEEN to match purchase dates with the correct price period.
+* Average Selling Price = SUM(price × units) / SUM(units).
+* LEFT JOIN is needed because products with no sales must still appear.
+* IFNULL() converts NULL results to 0.
+* ROUND(..., 2) rounds the answer to 2 decimal places.
+
+Query:
+Select p.product_id,round(ifnull(sum(p.price * u.units)/sum(u.units),0),2) as average_price 
+from Prices p left join UnitsSold u on
+p.product_id=u.product_id
+and u.purchase_date between p.start_date and p.end_date
+group by p.product_id
