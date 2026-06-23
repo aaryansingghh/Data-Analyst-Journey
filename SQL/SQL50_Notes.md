@@ -307,3 +307,28 @@ from Prices p left join UnitsSold u on
 p.product_id=u.product_id
 and u.purchase_date between p.start_date and p.end_date
 group by p.product_id
+
+## Problem 17: Project Employees I
+
+Concepts:
+
+* JOIN
+* AVG()
+* ROUND()
+* GROUP BY
+
+Learning:
+
+* JOIN Project and Employee tables using employee_id.
+* AVG() automatically calculates total experience ÷ number of employees.
+* GROUP BY project_id calculates the average for each project separately.
+* ROUND(...,2) formats the result to 2 decimal places.
+
+Query:
+Select p.project_id,round(avg(emp.experience_years),2) as average_years
+from Project p 
+left join Employee emp on emp.employee_id=p.employee_id 
+group by p.project_id
+
+Key Point:
+When a question asks for an average value, use AVG() instead of manually dividing by the number of rows.
