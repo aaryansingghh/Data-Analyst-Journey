@@ -332,3 +332,23 @@ group by p.project_id
 
 Key Point:
 When a question asks for an average value, use AVG() instead of manually dividing by the number of rows.
+
+## Problem 18: Percentage of Users Attended a Contest
+
+• Count registrations per contest using COUNT().
+• Get total users using a subquery: (SELECT COUNT(*) FROM Users)
+• Calculate percentage: COUNT(user_id) * 100.0 / Total Users
+• Round the result to 2 decimal places using ROUND().
+• Sort by percentage DESC and contest_id ASC.
+
+Query Logic:
+
+Select contest_id,round(count(user_id) * 100.0 /(select count(*) from Users), 2) as percentage
+from Register
+group by contest_id
+order by percentage desc, contest_id asc
+
+### Learning
+→ COUNT() with GROUP BY for aggregation.
+→ Subquery inside a mathematical expression.
+→ ROUND() for formatting results.
