@@ -352,3 +352,25 @@ order by percentage desc, contest_id asc
 → COUNT() with GROUP BY for aggregation.
 → Subquery inside a mathematical expression.
 → ROUND() for formatting results.
+
+## Problem 19: Queries Quality and Percentage
+
+• Group records by query_name using GROUP BY.
+• Calculate query quality as:- AVG(rating / position)
+• Identify poor queries where rating < 3.
+• Calculate poor query percentage:- (Poor Queries / Total Queries) × 100
+• Round both values to 2 decimal places.
+
+### Query Logic
+
+Select query_name,round(avg(cast(rating as decimal) / position), 2) as quality,
+round(avg(case when rating < 3 then 1.0 else 0 END) * 100, 2) as poor_query_percentage
+from Queries
+group by query_name;
+
+### Learning
+
+→ AVG() can directly calculate averages of expressions.
+→ CASE WHEN is useful for conditional counting.
+→ AVG(0,1 values) can be used to calculate percentages.
+→ GROUP BY helps generate metrics for each category.
