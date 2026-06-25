@@ -403,3 +403,32 @@ group by left(trans_date, 7),country;
 - SUM(state = 'approved') counts approved transactions in **MySQL** because TRUE = 1 and FALSE = 0.
 - SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) sums only the approved transaction amounts.
 - Conditional aggregation allows multiple statistics to be calculated in a single query.
+
+## Problem 21: Immediate Food Delivery II
+
+Concepts:
+
+* JOIN
+* GROUP BY
+* MIN()
+* CASE WHEN
+* COUNT()
+* ROUND()
+
+Query:
+
+Select round(sum(case when d.order_date = d.customer_pref_delivery_date then 1 else 0 end ) * 100.0 / COUNT(*),2) 
+as immediate_percentage
+from Delivery d
+join (select customer_id,min(order_date) as first_order from Delivery group by customer_id
+) f
+on d.customer_id = f.customer_id
+and d.order_date = f.first_order;
+
+Learning:
+
+* MIN(order_date) finds the first order of each customer.
+* JOIN is used to retrieve the complete first-order record.
+* CASE WHEN counts only immediate deliveries.
+* COUNT(*) gives the total number of first orders.
+* ROUND() formats the percentage to 2 decimal places.
