@@ -377,7 +377,7 @@ group by query_name;
 
 ## Problem 20: Monthly Transactions I
 
-# Query logic
+ Query logic:
 
 Select left(trans_date, 7) as month,
 country,count(*) as trans_count,
@@ -387,7 +387,7 @@ sum(case when state = 'approved' then amount else 0 END) as approved_total_amoun
 from Transactions
 group by left(trans_date, 7),country;
 
-# 💡 Approach
+💡 Approach:
 
 - Extract the **Year-Month (YYYY-MM)** using LEFT(trans_date, 7).
 - Group the records by **month** and **country**.
@@ -396,7 +396,7 @@ group by left(trans_date, 7),country;
 - Use SUM(amount) to calculate the total transaction amount.
 - Use CASE WHEN inside SUM() to calculate the total amount of approved transactions.
 
-#  Learnings
+ Learnings:
 
 - LEFT(trans_date, 7) extracts the month in YYYY-MM format.
 - COUNT(*) counts all rows within each group.
