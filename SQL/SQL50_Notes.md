@@ -374,3 +374,32 @@ group by query_name;
 → CASE WHEN is useful for conditional counting.
 → AVG(0,1 values) can be used to calculate percentages.
 → GROUP BY helps generate metrics for each category.
+
+## Problem 20: Monthly Transactions I
+
+## Query logic
+
+Select left(trans_date, 7) as month,
+country,count(*) as trans_count,
+sum(state = 'approved') as approved_count,
+sum(amount) as trans_total_amount,
+sum(case when state = 'approved' then amount else 0 END) as approved_total_amount
+from Transactions
+group by left(trans_date, 7),country;
+
+## 💡 Approach
+
+- Extract the **Year-Month (YYYY-MM)** using LEFT(trans_date, 7).
+- Group the records by **month** and **country**.
+- Use COUNT(*) to count all transactions.
+- Use **conditional aggregation** to count only approved transactions.
+- Use SUM(amount) to calculate the total transaction amount.
+- Use CASE WHEN inside SUM() to calculate the total amount of approved transactions.
+
+##  Learnings
+
+- LEFT(trans_date, 7) extracts the month in YYYY-MM format.
+- COUNT(*) counts all rows within each group.
+- SUM(state = 'approved') counts approved transactions in **MySQL** because TRUE = 1 and FALSE = 0.
+- SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) sums only the approved transaction amounts.
+- Conditional aggregation allows multiple statistics to be calculated in a single query.
