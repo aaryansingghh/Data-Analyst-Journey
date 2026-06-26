@@ -432,3 +432,24 @@ Learning:
 * CASE WHEN counts only immediate deliveries.
 * COUNT(*) gives the total number of first orders.
 * ROUND() formats the percentage to 2 decimal places.
+
+## Problem 22: Game Play Analysis IV
+
+Concepts:
+
+* JOIN
+* GROUP BY
+* MIN()
+* DATE_ADD()
+* COUNT()
+* DISTINCT
+* ROUND()
+
+Query:
+
+Select round(count(*) * 1.0 /(select count(distinct player_id) from Activity),2) as fraction
+from Activity a
+join(select player_id,min(event_date) as first_login
+from Activity group by player_id) f 
+on a.player_id = f.player_id 
+and a.event_date = date_add(f.first_login, interval 1 day);
