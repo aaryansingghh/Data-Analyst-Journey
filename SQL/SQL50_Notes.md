@@ -455,9 +455,29 @@ on a.player_id = f.player_id
 and a.event_date = date_add(f.first_login, interval 1 day);
 
 Learning:
+
 * MIN(event_date) finds the first login date of each player.
 * JOIN combines the first login data with the original table.
 * DATE_ADD() checks whether a player logged in exactly one day after their first login.
 * COUNT(*) counts players who logged in the next day.
 * COUNT(DISTINCT player_id) counts the total number of unique players.
 * ROUND() rounds the final fraction to 2 decimal places.
+
+## Problem 23: Number of Unique Subjects Taught by Each Teacher
+
+Concepts:
+
+*COUNT(DISTINCT)
+*GROUP BY
+
+Query:
+
+Select teacher_id,count(distinct subject_id) as cnt from Teacher
+group by teacher_id
+
+Learning:
+
+*COUNT(DISTINCT column_name) counts only unique values.
+*GROUP BY groups records for each teacher.
+*The same subject_id taught in different departments is counted only once.
+*COUNT(DISTINCT) is commonly used to remove duplicate values while counting.
