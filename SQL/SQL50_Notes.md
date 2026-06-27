@@ -477,7 +477,21 @@ group by teacher_id
 
 Learning:
 
-*COUNT(DISTINCT column_name) counts only unique values.
-*GROUP BY groups records for each teacher.
-*The same subject_id taught in different departments is counted only once.
-*COUNT(DISTINCT) is commonly used to remove duplicate values while counting.
+* COUNT(DISTINCT column_name) counts only unique values.
+* GROUP BY groups records for each teacher.
+* The same subject_id taught in different departments is counted only once.
+* COUNT(DISTINCT) is commonly used to remove duplicate values while counting.
+
+## Problem 24: User Activity for the Past 30 Days I
+
+Query:
+
+Select activity_date as day,count(distinct user_id) as active_users from Activity
+where activity_date between '2019-06-28' and '2019-07-27'
+group by activity_date
+
+Learning:
+* COUNT(DISTINCT user_id) counts unique active users for each day.
+* BETWEEN filters records within a specific date range.
+* GROUP BY activity_date groups the data by each day.
+* AS is used to rename the output columns (day and active_users).
