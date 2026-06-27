@@ -484,6 +484,13 @@ Learning:
 
 ## Problem 24: User Activity for the Past 30 Days I
 
+Concepts:
+
+* COUNT(DISTINCT)
+* GROUP BY
+* WHERE
+* BETWEEN
+
 Query:
 
 Select activity_date as day,count(distinct user_id) as active_users from Activity
