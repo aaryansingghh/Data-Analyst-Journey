@@ -503,7 +503,7 @@ Learning:
 * GROUP BY activity_date groups the data by each day.
 * AS is used to rename the output columns (day and active_users).
 
-## Problem 25: 
+## Problem 25: Product Sales Analysis III
 
 Concepts:
 
@@ -528,3 +528,25 @@ Learning:
 * GROUP BY product_id groups sales records by product.
 * JOIN retrieves the quantity and price for the first sale year.
 * Matching both product_id and first_year ensures only the first-year sales records are returned.
+
+## Problem 25: Classes With At Least 5 Students
+
+Concepts:
+
+* GROUP BY
+* COUNT()
+* HAVING
+
+Query:
+
+Select class
+from Courses
+group by class
+having count(student) >= 5;
+
+Learning:
+
+* GROUP BY groups all students by class.
+* COUNT(student) counts the number of students in each class.
+* HAVING filters grouped results based on aggregate functions.
+* Use HAVING instead of WHERE when filtering with COUNT(), SUM(), AVG(), etc.
