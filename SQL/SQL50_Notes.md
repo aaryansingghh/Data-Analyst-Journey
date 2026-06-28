@@ -502,3 +502,22 @@ Learning:
 * BETWEEN filters records within a specific date range.
 * GROUP BY activity_date groups the data by each day.
 * AS is used to rename the output columns (day and active_users).
+
+## Problem 25: 
+
+Query:
+
+Select s.product_id,f.first_year,s.quantity,s.price
+from Sales s
+join ( Select product_id,min(year) as first_year
+from Sales
+group by product_id)f
+on s.product_id = f.product_id
+and s.year = f.first_year;
+
+Learning:
+
+* MIN(year) finds the first year each product was sold.
+* GROUP BY product_id groups sales records by product.
+* JOIN retrieves the quantity and price for the first sale year.
+* Matching both product_id and first_year ensures only the first-year sales records are returned.
