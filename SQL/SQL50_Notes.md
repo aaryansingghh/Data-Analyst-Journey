@@ -505,6 +505,13 @@ Learning:
 
 ## Problem 25: 
 
+Concepts:
+
+* JOIN
+* GROUP BY
+* MIN()
+* Subquery
+
 Query:
 
 Select s.product_id,f.first_year,s.quantity,s.price
