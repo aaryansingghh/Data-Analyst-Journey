@@ -355,11 +355,11 @@ order by percentage desc, contest_id asc
 
 ## Problem 19: Queries Quality and Percentage
 
-• Group records by query_name using GROUP BY.
-• Calculate query quality as:- AVG(rating / position)
-• Identify poor queries where rating < 3.
-• Calculate poor query percentage:- (Poor Queries / Total Queries) × 100
-• Round both values to 2 decimal places.
+* Group records by query_name using GROUP BY.
+* Calculate query quality as:- AVG(rating / position)
+* Identify poor queries where rating < 3.
+* Calculate poor query percentage:- (Poor Queries / Total Queries) × 100
+* Round both values to 2 decimal places.
 
 ### Query Logic
 
@@ -370,14 +370,14 @@ group by query_name;
 
 ### Learning
 
-→ AVG() can directly calculate averages of expressions.
-→ CASE WHEN is useful for conditional counting.
-→ AVG(0,1 values) can be used to calculate percentages.
-→ GROUP BY helps generate metrics for each category.
+* AVG() can directly calculate averages of expressions.
+* CASE WHEN is useful for conditional counting.
+* AVG(0,1 values) can be used to calculate percentages.
+* GROUP BY helps generate metrics for each category.
 
 ## Problem 20: Monthly Transactions I
 
- Query logic:
+Query logic:
 
 Select left(trans_date, 7) as month,
 country,count(*) as trans_count,
@@ -398,11 +398,11 @@ group by left(trans_date, 7),country;
 
  Learnings:
 
-- LEFT(trans_date, 7) extracts the month in YYYY-MM format.
-- COUNT(*) counts all rows within each group.
-- SUM(state = 'approved') counts approved transactions in **MySQL** because TRUE = 1 and FALSE = 0.
-- SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) sums only the approved transaction amounts.
-- Conditional aggregation allows multiple statistics to be calculated in a single query.
+* LEFT(trans_date, 7) extracts the month in YYYY-MM format.
+* COUNT(*) counts all rows within each group.
+* SUM(state = 'approved') counts approved transactions in **MySQL** because TRUE = 1 and FALSE = 0.
+* SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) sums only the approved transaction amounts.
+* Conditional aggregation allows multiple statistics to be calculated in a single query.
 
 ## Problem 21: Immediate Food Delivery II
 
