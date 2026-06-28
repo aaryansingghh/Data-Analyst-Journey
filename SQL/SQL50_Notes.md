@@ -529,7 +529,7 @@ Learning:
 * JOIN retrieves the quantity and price for the first sale year.
 * Matching both product_id and first_year ensures only the first-year sales records are returned.
 
-## Problem 25: Classes With At Least 5 Students
+## Problem 26: Classes With At Least 5 Students
 
 Concepts:
 
