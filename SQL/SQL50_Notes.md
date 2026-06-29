@@ -550,3 +550,25 @@ Learning:
 * COUNT(student) counts the number of students in each class.
 * HAVING filters grouped results based on aggregate functions.
 * Use HAVING instead of WHERE when filtering with COUNT(), SUM(), AVG(), etc.
+
+## Problem 27: Find Followers Count
+
+Concepts:-
+
+* COUNT()
+* GROUP BY
+* ORDER BY
+
+Queryes:
+
+Select user_id,count(follower_id) as followers_count
+from Followers
+group by user_id
+order by user_id;
+
+Learning:
+
+* COUNT(follower_id) counts the total followers for each user.
+* GROUP BY user_id groups all followers of the same user.
+* ORDER BY user_id sorts the result in ascending order.
+* DISTINCT is not required because (user_id, follower_id) is already a unique primary key.
