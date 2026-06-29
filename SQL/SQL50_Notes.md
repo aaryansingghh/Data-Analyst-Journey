@@ -559,7 +559,7 @@ Concepts:-
 * GROUP BY
 * ORDER BY
 
-Queryes:
+Query:
 
 Select user_id,count(follower_id) as followers_count
 from Followers
