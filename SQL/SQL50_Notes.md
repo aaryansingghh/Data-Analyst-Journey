@@ -572,3 +572,28 @@ Learning:
 * GROUP BY user_id groups all followers of the same user.
 * ORDER BY user_id sorts the result in ascending order.
 * DISTINCT is not required because (user_id, follower_id) is already a unique primary key.
+
+## Problem 28: Biggest Single Number
+
+Concepts:
+
+* MAX()
+* GROUP BY
+* HAVING
+* COUNT()
+* Subquery
+
+Query:
+
+Select max(num) as num from MyNumbers
+where num in (
+Select num from MyNumbers 
+group by num having count(num)=1)
+
+Learning:
+
+* GROUP BY num groups identical numbers together.
+* HAVING COUNT(num) = 1 filters numbers that appear only once.
+* WHERE num IN (...) keeps only the single numbers.
+* MAX(num) returns the largest single number.
+* MAX() returns NULL automatically if no single number exists.
