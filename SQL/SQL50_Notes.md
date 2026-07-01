@@ -597,3 +597,18 @@ Learning:
 * WHERE num IN (...) keeps only the single numbers.
 * MAX(num) returns the largest single number.
 * MAX() returns NULL automatically if no single number exists.
+
+## Problem 29: Customers Who Bought All Products
+
+Concepts:
+
+* COUNT(DISTINCT)
+* GROUP BY
+* HAVING
+* Subquery
+
+Query:
+
+Select customer_id from Customer
+group by customer_id
+having count(distinct product_key) = (select count(*) from product)
