@@ -612,3 +612,11 @@ Query:
 Select customer_id from Customer
 group by customer_id
 having count(distinct product_key) = (select count(*) from product)
+
+Learning:
+
+* COUNT(DISTINCT product_key) counts the unique products purchased by each customer.
+* GROUP BY customer_id groups all purchases by customer.
+* The subquery COUNT(*) calculates the total number of products.
+* HAVING compares the number of products bought by each customer with the total number of available products.
+* If both counts are equal, the customer has purchased all products.
