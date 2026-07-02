@@ -620,3 +620,33 @@ Learning:
 * The subquery COUNT(*) calculates the total number of products.
 * HAVING compares the number of products bought by each customer with the total number of available products.
 * If both counts are equal, the customer has purchased all products.
+
+## Problem 30: The Number of Employees Which Report to Each Employee
+
+Concepts:
+
+* Self JOIN
+* COUNT()
+* AVG()
+* ROUND()
+* GROUP BY
+* ORDER BY
+
+Query:
+
+Select m.employee_id,m.name,
+count(e.employee_id) as reports_count,
+round(avg(e.age), 0) as average_age
+from Employees e
+join Employees m
+on e.reports_to = m.employee_id
+group by m.employee_id,m.name
+order by m.employee_id;
+
+Learning:
+* Self JOIN is used because managers and employees are stored in the same table.
+* COUNT(e.employee_id) counts the number of employees reporting to each manager.
+* AVG(e.age) calculates the average age of the reporting employees.
+* ROUND() rounds the average age to the nearest integer.
+* GROUP BY groups all employees under their respective manager.
+* ORDER BY employee_id sorts the output in ascending order.
