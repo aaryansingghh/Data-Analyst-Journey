@@ -679,6 +679,13 @@ Learning:
 
 ## Problem 32: Triangle Judgement
 
+A triangle can be formed only if:
+* x + y > z
+* x + z > y
+* y + z > x
+If all three conditions are true → Yes
+Otherwise → No
+
 Concepts:
 
 * CASE WHEN
