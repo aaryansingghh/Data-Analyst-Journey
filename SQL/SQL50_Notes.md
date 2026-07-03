@@ -676,3 +676,27 @@ Learning:
 * UNION combines both result sets and removes duplicates.
 * GROUP BY employee_id groups records for each employee.
 * HAVING filters grouped results based on the number of departments.
+
+## Problem 32: Triangle Judgement
+
+Concepts:
+
+* CASE WHEN
+* Logical Operators (AND)
+
+Query:
+
+Select x,y,z,
+case when x + y > z
+and x + z > y
+and y + z > x
+then 'Yes'
+else 'No' end as  triangle
+from Triangle;
+
+Learning:
+
+* A triangle is valid only if the sum of any two sides is greater than the third side.
+* CASE WHEN is used to apply conditional logic in SQL.
+* AND ensures that all three triangle conditions must be true.
+* ELSE returns 'No' if any one of the conditions fails.
