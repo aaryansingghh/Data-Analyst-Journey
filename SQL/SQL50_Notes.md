@@ -650,3 +650,29 @@ Learning:
 * ROUND() rounds the average age to the nearest integer.
 * GROUP BY groups all employees under their respective manager.
 * ORDER BY employee_id sorts the output in ascending order.
+
+## Problem 31: Primary Department for Each Employee
+
+Concepts:
+
+* UNION
+* GROUP BY
+* HAVING
+* COUNT()
+* WHERE
+
+Query:
+
+Select distinct employee_id,department_id from Employee 
+where primary_flag = 'Y'
+union Select distinct employee_id,department_id from Employee 
+group by employee_id
+having count(*) = 1;
+
+Learning:
+
+* primary_flag = 'Y' identifies the primary department for employees in multiple departments.
+* COUNT(*) = 1 finds employees who belong to only one department.
+* UNION combines both result sets and removes duplicates.
+* GROUP BY employee_id groups records for each employee.
+* HAVING filters grouped results based on the number of departments.
