@@ -725,7 +725,7 @@ on l1.id = l2.id - 1 join Logs l3
 on l2.id = l3.id - 1 where l1.num = l2.num
 and l2.num = l3.num;
 
-Learn:
+Learning:
 
 * Self JOIN is used to compare rows within the same table.
 * Three aliases (l1, l2, l3) represent three consecutive rows.
