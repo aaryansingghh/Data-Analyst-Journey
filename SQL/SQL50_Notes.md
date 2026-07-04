@@ -707,3 +707,28 @@ Learning:
 * CASE WHEN is used to apply conditional logic in SQL.
 * AND ensures that all three triangle conditions must be true.
 * ELSE returns 'No' if any one of the conditions fails.
+
+## Problem 33: Consecutive Numbers
+
+Concepts:
+* Self JOIN
+* Multiple Table Aliases
+* DISTINCT
+* WHERE
+* AND
+
+Query:
+
+Select distinct l1.num as ConsecutiveNums
+from Logs l1 join Logs l2
+on l1.id = l2.id - 1 join Logs l3
+on l2.id = l3.id - 1 where l1.num = l2.num
+and l2.num = l3.num;
+
+Learn:
+
+* Self JOIN is used to compare rows within the same table.
+* Three aliases (l1, l2, l3) represent three consecutive rows.
+* l1.id = l2.id - 1 and l2.id = l3.id - 1 ensure the rows are consecutive.
+* WHERE l1.num = l2.num AND l2.num = l3.num checks if the same number appears three times consecutively.
+* DISTINCT removes duplicate results if the same number appears in multiple consecutive sequences.
