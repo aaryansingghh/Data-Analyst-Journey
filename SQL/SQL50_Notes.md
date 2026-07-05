@@ -732,3 +732,33 @@ Learning:
 * l1.id = l2.id - 1 and l2.id = l3.id - 1 ensure the rows are consecutive.
 * WHERE l1.num = l2.num AND l2.num = l3.num checks if the same number appears three times consecutively.
 * DISTINCT removes duplicate results if the same number appears in multiple consecutive sequences.
+
+## Problem 34: Product Price at a Given Date
+
+Concepts:
+
+* MAX()
+* MIN()
+* GROUP BY
+* HAVING
+* WHERE
+* UNION
+* Tuple Comparison ((col1, col2) IN (...))
+
+Query:
+
+Select product_id,new_price as price
+from Products
+where (product_id, change_date) in (Select product_id,max(change_date)
+from Products where change_date <= '2019-08-16'
+group by product_id)
+union Select product_id,10 as price
+from Products
+group by product_id
+having min(change_date) > '2019-08-16';
+
+Learning:
+
+* MAX(change_date) finds the latest price update before or on the given date.
+* MIN(change_date) identifies products whose first update occurred after the given date.
+* HAVING filters grouped results based on aggregate values.
