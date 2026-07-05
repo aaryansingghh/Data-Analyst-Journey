@@ -761,4 +761,8 @@ Learning:
 
 * MAX(change_date) finds the latest price update before or on the given date.
 * MIN(change_date) identifies products whose first update occurred after the given date.
+* UNION combines updated prices with products that still have the default price.
 * HAVING filters grouped results based on aggregate values.
+* Products without any price update before 2019-08-16 keep the default price of 10.
+
+
