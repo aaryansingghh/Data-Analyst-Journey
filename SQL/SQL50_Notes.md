@@ -765,4 +765,27 @@ Learning:
 * HAVING filters grouped results based on aggregate values.
 * Products without any price update before 2019-08-16 keep the default price of 10.
 
+## Problem 35: Last Person to Fit in the Bus
 
+Concepts:
+
+* Window Function
+* SUM() OVER()
+* ORDER BY
+* Subquery
+* LIMIT
+
+Query:
+Select person_name
+from (Select person_name,sum(weight) over (order by turn) as total_weight
+from Queue) t
+where total_weight <= 1000
+order by total_weight desc
+limit 1;
+
+Learning:
+
+* SUM() OVER(ORDER BY turn) calculates the cumulative weight in boarding order.
+* The window function keeps a running total without grouping the rows.
+* WHERE total_weight <= 1000 filters people who can still board.
+* ORDER BY total_weight DESC LIMIT 1 returns the last person who fits within the weight limit.
