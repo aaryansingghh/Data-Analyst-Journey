@@ -789,3 +789,30 @@ Learning:
 * The window function keeps a running total without grouping the rows.
 * WHERE total_weight <= 1000 filters people who can still board.
 * ORDER BY total_weight DESC LIMIT 1 returns the last person who fits within the weight limit.
+
+## Problem 36: Count Salary Categories
+
+Concepts:
+* CASE WHEN
+* COUNT()
+* UNION ALL
+* Conditional Aggregation
+
+Query:
+
+Select 'Low Salary' as category,
+count(case when income < 20000 then 1 end) as accounts_count 
+from Accounts
+union all Select 'Average Salary',
+count(case when income between 20000 and 50000 then 1 end)
+from Accounts
+union all Select 'High Salary',
+count(case when income > 50000 then 1 end)
+from Accounts;
+
+Learning:
+
+* CASE WHEN classifies each income into a salary category.
+* COUNT(CASE WHEN ... THEN 1 END) counts only rows that satisfy the condition.
+* UNION ALL combines the three salary categories into one result.
+* UNION ALL is used instead of UNION because all three rows must always be returned, including categories with 0 accounts.
