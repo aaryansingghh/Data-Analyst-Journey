@@ -420,8 +420,7 @@ Query:
 Select round(sum(case when d.order_date = d.customer_pref_delivery_date then 1 else 0 end ) * 100.0 / COUNT(*),2) 
 as immediate_percentage
 from Delivery d
-join (select customer_id,min(order_date) as first_order from Delivery group by customer_id
-) f
+join (select customer_id,min(order_date) as first_order from Delivery group by customer_id) f
 on d.customer_id = f.customer_id
 and d.order_date = f.first_order;
 
@@ -447,7 +446,7 @@ Concepts:
 
 Query:
 
-Select round(count(*) * 1.0 /(select count(distinct player_id) from Activity),2) as fraction
+Select round(count(*) * 1.0/(select count(distinct player_id) from Activity),2) as fraction
 from Activity a
 join(select player_id,min(event_date) as first_login
 from Activity group by player_id) f 
