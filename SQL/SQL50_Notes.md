@@ -839,3 +839,31 @@ Learning:
 * NOT IN with a subquery finds managers whose IDs no longer exist in the table.
 * ORDER BY employee_id returns the result in ascending order.
 
+## Problem 38: Exchange Seats
+
+Concepts:
+* CASE WHEN
+* MOD (%)
+* Subquery
+* MAX()
+* ORDER BY
+
+Query:
+
+Select case
+when id % 2 = 1 and id != (Select max(id) from Seat) then id + 1
+when id % 2 = 0 then id - 1
+else id
+end as id,
+student
+from Seat
+order by id;
+
+Learning:
+
+* id % 2 = 1 identifies odd seat IDs.
+* id % 2 = 0 identifies even seat IDs.
+* MAX(id) finds the last seat ID.
+* CASE WHEN swaps consecutive seat IDs.
+* ORDER BY id displays the final seating arrangement in ascending order.
+
