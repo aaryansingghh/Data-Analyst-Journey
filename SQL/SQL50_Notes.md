@@ -815,3 +815,27 @@ Learning:
 * COUNT(CASE WHEN ... THEN 1 END) counts only rows that satisfy the condition.
 * UNION ALL combines the three salary categories into one result.
 * UNION ALL is used instead of UNION because all three rows must always be returned, including categories with 0 accounts.
+
+## Problem 37: Employees Whose Manager Left the Company
+
+Concepts:
+* NOT IN
+* Subquery
+* WHERE
+* ORDER BY
+
+Query:
+
+Select employee_id from Employees
+where salary < 30000
+and manager_id is not null
+and manager_id not in (Select employee_id from Employees)
+order by employee_id
+
+Learning:
+
+* salary < 30000 filters employees with salaries below 30000.
+* manager_id IS NOT NULL excludes employees who don't have a manager.
+* NOT IN with a subquery finds managers whose IDs no longer exist in the table.
+* ORDER BY employee_id returns the result in ascending order.
+
