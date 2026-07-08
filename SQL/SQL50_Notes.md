@@ -867,3 +867,43 @@ Learning:
 * CASE WHEN swaps consecutive seat IDs.
 * ORDER BY id displays the final seating arrangement in ascending order.
 
+## Problem 39: Movie Rating
+
+Concepts:
+
+* INNER JOIN
+* GROUP BY
+* COUNT()
+* AVG()
+* ORDER BY
+* LIMIT
+* WHERE
+* UNION ALL
+
+Query:
+
+Select results from ( Select
+u.name as results from MovieRating mr
+join Users u on mr.user_id=u.user_id
+group by u.user_id,u.name
+order by count(*) desc ,u.name
+limit 1)A union all
+
+Select results from ( Select
+m.title as results from MovieRating mr
+join Movies m
+on mr.movie_id=m.movie_id
+where created_at between '2020-02-01' and '2020-02-29'
+group by m.movie_id,m.title
+order by avg(rating) desc ,m.title
+limit 1)B;
+
+Learning:
+
+* JOIN combines data from Users, Movies, and MovieRating.
+* COUNT(*) finds the user who rated the most movies.
+* AVG(rating) calculates the average movie rating.
+* WHERE filters ratings for February 2020.
+* ORDER BY handles sorting and tie-breaking alphabetically.
+* LIMIT 1 returns only the required result.
+* UNION ALL combines the answers of the two independent queries into one output.
