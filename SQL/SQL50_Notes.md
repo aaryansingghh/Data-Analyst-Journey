@@ -898,6 +898,13 @@ group by m.movie_id,m.title
 order by avg(rating) desc ,m.title
 limit 1)B;
 
+The relationship is:
+
+Movies -------- MovieRating -------- Users
+   |                 |                 |
+movie_id          movie_id          user_id
+                  user_id
+
 Learning:
 
 * JOIN combines data from Users, Movies, and MovieRating.
