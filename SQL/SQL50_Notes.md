@@ -914,3 +914,50 @@ Learning:
 * ORDER BY handles sorting and tie-breaking alphabetically.
 * LIMIT 1 returns only the required result.
 * UNION ALL combines the answers of the two independent queries into one output.
+
+## Problem 40: Restaurant Growth
+
+Concepts:
+
+* WITH (CTE)
+* SUM() OVER()
+* ROW_NUMBER() OVER()
+* GROUP BY
+* ROUND()
+* Window Frame (ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)
+
+Query:
+
+With daily_amount as (
+    Select
+        visited_on,
+        Sum(amount) as amount
+    from Customer
+    Group by visited_on
+)
+
+Select
+    visited_on,
+    amount,
+    Round(amount / 7, 2) as average_amount
+from (
+    Select
+        visited_on,
+        SUM(amount) over (
+            Order by visited_on
+            rows between 6 PRECEDING and CURRENT row
+        ) as amount,
+        row_number() over (order by visited_on) as rn
+    from daily_amount
+) t
+where rn >= 7
+Order by visited_on;
+
+Learning:
+
+* GROUP BY visited_on calculates the total amount spent each day.
+* SUM() OVER() computes the 7-day rolling total.
+* ROWS BETWEEN 6 PRECEDING AND CURRENT ROW creates a moving 7-day window.
+* ROW_NUMBER() skips the first six days because a full 7-day window is not available.
+* ROUND(amount / 7, 2) calculates the 7-day moving average rounded to two decimal places.
+
