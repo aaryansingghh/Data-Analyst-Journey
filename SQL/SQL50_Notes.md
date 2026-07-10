@@ -929,27 +929,14 @@ Concepts:
 Query:
 
 With daily_amount as (
-    Select
-        visited_on,
-        Sum(amount) as amount
-    from Customer
-    Group by visited_on
+Select visited_on,Sum(amount) as amount from Customer
+Group by visited_on
 )
 
-Select
-    visited_on,
-    amount,
-    Round(amount / 7, 2) as average_amount
-from (
-    Select
-        visited_on,
-        SUM(amount) over (
-            Order by visited_on
-            rows between 6 PRECEDING and CURRENT row
-        ) as amount,
-        row_number() over (order by visited_on) as rn
-    from daily_amount
-) t
+Select visited_on,amount, Round(amount / 7, 2) as average_amount
+from ( Select visited_on, SUM(amount) over ( Order by visited_on
+rows between 6 PRECEDING and CURRENT row ) as amount,
+row_number() over (order by visited_on) as rn from daily_amount) t
 where rn >= 7
 Order by visited_on;
 
@@ -979,8 +966,7 @@ Select requester_id as id
 from RequestAccepted
 union all
 
-Select accepter_id from RequestAccepted
-) t
+Select accepter_id from RequestAccepted) t
 group by id
 order by num desc
 limit 1;
