@@ -961,3 +961,35 @@ Learning:
 * ROW_NUMBER() skips the first six days because a full 7-day window is not available.
 * ROUND(amount / 7, 2) calculates the 7-day moving average rounded to two decimal places.
 
+## Problem 41: Friend Requests II - Who Has the Most Friends
+
+Concepts:
+
+* UNION ALL
+* GROUP BY
+* COUNT()
+* Subquery
+* ORDER BY
+* LIMIT
+
+Query:
+
+Select id,count(*) as num  from ( 
+Select requester_id as id
+from RequestAccepted
+union all
+
+Select accepter_id from RequestAccepted
+) t
+group by id
+order by num desc
+limit 1;
+
+Learning:
+
+* UNION ALL combines both requester_id and accepter_id into a single list of people.
+* COUNT(*) counts the total number of friends for each person.
+* GROUP BY id groups all friendship records by person.
+* ORDER BY num DESC sorts people by the highest friend count.
+* LIMIT 1 returns the person with the most friends.
+
