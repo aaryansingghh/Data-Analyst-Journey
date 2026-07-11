@@ -999,15 +999,15 @@ group by tiv_2015
 having count(*) > 1
 )
 and (lat, lon) in (Select lat, lon
-from Insurance
-group by lat, lon
-having count(*) = 1
-)
+From Insurance
+Group by lat, lon
+Having count(*) = 1
+);
 
-Learning::
+Learning:
 
 * HAVING COUNT(*) > 1 finds duplicated tiv_2015 values.
 * HAVING COUNT(*) = 1 finds unique (lat, lon) locations.
 * IN filters records that satisfy the duplicated tiv_2015 condition.
 * Tuple comparison (lat, lon) checks unique location pairs.
-* ROUND(SUM(tiv_2016), 2) returns in the required total rounded to two decimal places.
+* ROUND(SUM(tiv_2016), 2) returns the required total rounded to two decimal places.
