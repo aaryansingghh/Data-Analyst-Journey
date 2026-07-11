@@ -979,3 +979,35 @@ Learning:
 * ORDER BY num DESC sorts people by the highest friend count.
 * LIMIT 1 returns the person with the most friends.
 
+## Problem 42: Investments in 2016
+
+Concepts:
+
+* GROUP BY
+* HAVING
+* COUNT()
+* SUM()
+* ROUND()
+* Subquery
+* Tuple Comparison ((lat, lon))
+
+Query:
+
+Select round(sum(tiv_2016),2) as tiv_2016 from Insurance 
+Where tiv_2015 in (Select tiv_2015 from Insurance
+group by tiv_2015
+having count(*) > 1
+)
+and (lat, lon) in (Select lat, lon
+from Insurance
+group by lat, lon
+having count(*) = 1
+)
+
+Learning::
+
+* HAVING COUNT(*) > 1 finds duplicated tiv_2015 values.
+* HAVING COUNT(*) = 1 finds unique (lat, lon) locations.
+* IN filters records that satisfy the duplicated tiv_2015 condition.
+* Tuple comparison (lat, lon) checks unique location pairs.
+* ROUND(SUM(tiv_2016), 2) returns in the required total rounded to two decimal places.
