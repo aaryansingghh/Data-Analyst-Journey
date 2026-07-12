@@ -1011,3 +1011,34 @@ Learning:
 * IN filters records that satisfy the duplicated tiv_2015 condition.
 * Tuple comparison (lat, lon) checks unique location pairs.
 * ROUND(SUM(tiv_2016), 2) returns the required total rounded to two decimal places.
+
+## Problem 43: Department Top Three Salaries
+
+Concepts:
+
+* DENSE_RANK()
+* Window Function
+* PARTITION BY
+* ORDER BY
+* JOIN
+* Subquery
+
+Query:
+
+Select
+d.name as Department,
+e.name as Employee,
+e.salary as Salary
+from ( Select *,
+dense_rank() over(
+partition by departmentId
+order by salary desc) as rnk from Employee
+) e
+join Department d
+on e.departmentId = d.id where rnk <= 3;
+
+Learning:
+
+* DENSE_RANK() assigns the same rank to employees with equal salaries.
+* PARTITION BY departmentId ranks employees within each department.
+* ORDER BY salary DESC ranks salaries from highest to lowest.
