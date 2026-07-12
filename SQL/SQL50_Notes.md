@@ -1042,3 +1042,5 @@ Learning:
 * DENSE_RANK() assigns the same rank to employees with equal salaries.
 * PARTITION BY departmentId ranks employees within each department.
 * ORDER BY salary DESC ranks salaries from highest to lowest.
+* WHERE rnk <= 3 returns employees whose salaries are in the top three unique salaries.
+* JOIN retrieves the department name from the Department table.
