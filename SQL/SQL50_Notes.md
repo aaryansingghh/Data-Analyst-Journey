@@ -1044,3 +1044,30 @@ Learning:
 * ORDER BY salary DESC ranks salaries from highest to lowest.
 * WHERE rnk <= 3 returns employees whose salaries are in the top three unique salaries.
 * JOIN retrieves the department name from the Department table.
+
+## Problem 44: Fix Names in a Table
+
+Concepts:
+
+* UPPER()
+* LOWER()
+* LEFT()
+* SUBSTRING()
+* CONCAT()
+* ORDER BY
+
+Query:
+
+Select user_id,concat(
+upper(left(name, 1)), lower(substring(name, 2))
+) as name
+from Users order by user_id;
+
+Learning:
+
+* LEFT(name, 1) extracts the first character.
+* UPPER() converts the first character to uppercase.
+* SUBSTRING(name, 2) extracts the remaining characters.
+* LOWER() converts the remaining characters to lowercase.
+* CONCAT() combines both parts into the corrected name.
+* ORDER BY user_id sorts the result by user ID.
