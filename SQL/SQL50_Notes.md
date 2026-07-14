@@ -1071,3 +1071,24 @@ Learning:
 * LOWER() converts the remaining characters to lowercase.
 * CONCAT() combines both parts into the corrected name.
 * ORDER BY user_id sorts the result by user ID.
+
+## Problem 45: Patients With a Condition
+
+Concepts:
+
+* LIKE
+* Wildcards (%)
+* WHERE
+* OR
+
+Query:
+
+Select patient_id,patient_name,conditions
+from Patients
+where conditions like 'DIAB1%' or conditions like '% DIAB1%';
+
+Learning:
+
+* LIKE 'DIAB1%' finds conditions that start with DIAB1.
+* LIKE '% DIAB1%' finds DIAB1 appearing after a space in the condition list.
+* % matches any sequence of characters.
