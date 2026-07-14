@@ -1092,3 +1092,4 @@ Learning:
 * LIKE 'DIAB1%' finds conditions that start with DIAB1.
 * LIKE '% DIAB1%' finds DIAB1 appearing after a space in the condition list.
 * % matches any sequence of characters.
+* OR combines both matching conditions to return all Type I Diabetes patients.
