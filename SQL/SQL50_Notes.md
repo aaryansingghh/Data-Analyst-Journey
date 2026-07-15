@@ -1093,3 +1093,26 @@ Learning:
 * LIKE '% DIAB1%' finds DIAB1 appearing after a space in the condition list.
 * % matches any sequence of characters.
 * OR combines both matching conditions to return all Type I Diabetes patients.
+
+## Problem 46: Delete Duplicate Emails
+
+Concepts:
+
+* DELETE
+* Self JOIN
+* ON
+* Comparison Operator (>)
+
+Query:
+
+Delete p1
+from Person p1 join Person p2
+on p1.email = p2.email
+and p1.id > p2.id;
+
+Learning:
+
+* Self JOIN compares rows within the same table.
+* p1.email = p2.email identifies duplicate email addresses.
+* p1.id > p2.id keeps the smallest id and deletes the larger ones.
+* DELETE removes only duplicate rows, not the entire table.
