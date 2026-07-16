@@ -1116,3 +1116,27 @@ Learning:
 * p1.email = p2.email identifies duplicate email addresses.
 * p1.id > p2.id keeps the smallest id and deletes the larger ones.
 * DELETE removes only duplicate rows, not the entire table.
+
+Problem 47: Second Highest Salary
+
+Concepts:
+
+* DISTINCT
+* ORDER BY
+* LIMIT
+* OFFSET
+* Subquery
+
+Query:
+
+Select max(salary) as SecondHighestSalary from Employee
+where salary < (Select max(salary)from Employee);
+
+Learning:
+
+* DISTINCT removes duplicate salaries.
+* ORDER BY salary DESC sorts salaries from highest to lowest.
+* OFFSET 1 skips the highest salary.
+* LIMIT 1 returns only the second highest salary.
+* The subquery returns NULL automatically if a second highest salary does not exist.
+
