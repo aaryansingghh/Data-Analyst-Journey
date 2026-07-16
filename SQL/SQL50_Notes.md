@@ -1117,7 +1117,7 @@ Learning:
 * p1.id > p2.id keeps the smallest id and deletes the larger ones.
 * DELETE removes only duplicate rows, not the entire table.
 
-Problem 47: Second Highest Salary
+## Problem 47: Second Highest Salary
 
 Concepts:
 
