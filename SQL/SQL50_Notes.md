@@ -1140,3 +1140,31 @@ Learning:
 * LIMIT 1 returns only the second highest salary.
 * The subquery returns NULL automatically if a second highest salary does not exist.
 
+## Problem 48: Group Sold Products By The Date
+
+Concepts:
+
+* GROUP BY
+* COUNT(DISTINCT)
+* GROUP_CONCAT()
+* DISTINCT
+* ORDER BY
+
+Query:
+
+Select sell_date,
+count(distinct product) as num_sold,
+group_concat(distinct product order by product separator ',') as products
+from Activities
+group by sell_date
+order by sell_date;
+
+Learning:
+
+* GROUP BY sell_date groups records by each selling date.
+* COUNT(DISTINCT product) counts unique products sold on each date.
+* GROUP_CONCAT() combines product names into a single comma-separated string.
+* DISTINCT removes duplicate product names.
+* ORDER BY product sorts product names alphabetically inside GROUP_CONCAT().
+* ORDER BY sell_date sorts the final result by date.
+
