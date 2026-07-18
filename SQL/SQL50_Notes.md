@@ -1168,3 +1168,30 @@ Learning:
 * ORDER BY product sorts product names alphabetically inside GROUP_CONCAT().
 * ORDER BY sell_date sorts the final result by date.
 
+## Problem 49: List the Products Ordered in a Period
+
+Concepts:
+
+* INNER JOIN
+* WHERE
+* BETWEEN
+* GROUP BY
+* SUM()
+* HAVING
+
+Query:
+
+Select pr.product_name,sum(ord.unit) as unit from Products pr
+inner join Orders ord
+on pr.product_id = ord.product_id
+where ord.order_date between '2020-02-01' and '2020-02-29'
+group by pr.product_name
+having sum(ord.unit) >= 100;
+
+Learning:
+
+* INNER JOIN combines the Products and Orders tables using product_id.
+* WHERE ... BETWEEN filters orders placed in February 2020.
+* SUM(unit) calculates the total units sold for each product.
+* GROUP BY product_name groups orders by product.
+* HAVING SUM(unit) >= 100 returns only products with at least 100 units sold.
