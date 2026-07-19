@@ -1194,3 +1194,31 @@ Learning:
 * SUM(unit) calculates the total units sold for each product.
 * GROUP BY product_name groups orders by product.
 * HAVING SUM(unit) >= 100 returns only products with at least 100 units sold.
+
+## Problem 50: Find Users With Valid E-Mails
+
+Concepts:
+
+* REGEXP / REGEXP_LIKE()
+* Character Sets ([])
+* Start Anchor (^)
+* End Anchor ($)
+* Regular Expressions
+
+Query:
+
+Select * from Users
+where REGEXP_LIKE(
+    mail,
+    '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\\.com$',
+    'c'
+);
+
+Learning:
+* ^ ensures the email starts at the beginning of the string.
+* [A-Za-z] ensures the first character is a letter.
+* [A-Za-z0-9_.-]* allows only letters, digits, _, ., and - in the email prefix.
+* @leetcode\\.com ensures the domain is exactly @leetcode.com.
+* $ ensures there are no extra characters after .com.
+* REGEXP_LIKE(..., 'c') performs a case-sensitive match in MySQL 8, ensuring .COM or .Com are rejected.
+
