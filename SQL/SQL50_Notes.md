@@ -24,8 +24,7 @@ Concepts:
 * IS NULL
 
 Query:
-Select name
-from Customer
+Select name from Customer
 where referee_id <> 2
 or referee_id IS NULL;
 
@@ -39,8 +38,7 @@ Concepts:
 * Numeric filtering
 
 Query:
-Select name, population, area
-from World
+Select name, population, area from World
 where area >= 3000000
 or population >= 25000000;
 
@@ -54,8 +52,7 @@ Concepts:
 * AS (Alias)
 
 Query:
-Select DISTINCT author_id AS id
-from Views
+Select DISTINCT author_id AS id from Views
 where author_id = viewer_id
 order by author_id;
 
@@ -68,8 +65,7 @@ Concepts:
 * LENGTH()
 
 Query:
-Select tweet_id
-from Tweets
+Select tweet_id from Tweets
 where LENGTH(content) > 15;
 
 ## Problem 6: Replace Employee ID With The Unique Identifier
@@ -93,8 +89,7 @@ Concepts:
 * INNER JOIN
 
 Query:
-Select product_name, year, price
-from Sales
+Select product_name, year, price from Sales
 inner join Product
 on Sales.product_id = Product.product_id;
 
@@ -204,8 +199,7 @@ Query:
 Select s.student_id,s.student_name,sub.subject_name,count(e.student_id) as attended_exams 
 from Students s
 cross join Subjects sub
-left join Examinations e
-on s.student_id=e.student_id 
+left join Examinations e on s.student_id=e.student_id 
 and sub.subject_name=e.subject_name
 group by s.student_id,s.student_name,sub.subject_name
 order by s.student_id,sub.subject_name asc
