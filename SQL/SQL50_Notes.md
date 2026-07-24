@@ -125,8 +125,7 @@ Concepts:
 
 Query:
 
-Select w1.id
-from Weather w1
+Select w1.id from Weather w1
 join Weather w2
 on DATEDIFF(w1.recordDate, w2.recordDate) = 1
 where w1.temperature > w2.temperature;
@@ -172,8 +171,7 @@ Concepts:
 
 Query:
 
-Select e.name,b.bonus 
-from Employee e 
+Select e.name,b.bonus  from Employee e 
 left join Bonus b 
 on e.empId=b.empId
 where b.Bonus < 1000 
@@ -220,8 +218,7 @@ Concepts:
 
 Query:
 
-Select e1.name
-from Employee e1
+Select e1.name from Employee e1
 join Employee e2
 on e1.id=e2.managerId
 group by e1.id
