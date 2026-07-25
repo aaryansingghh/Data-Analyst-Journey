@@ -735,8 +735,7 @@ Concepts:
 
 Query:
 
-Select product_id,new_price as price
-from Products
+Select product_id,new_price as price from Products
 where (product_id, change_date) in (Select product_id,max(change_date)
 from Products where change_date <= '2019-08-16'
 group by product_id)
@@ -951,9 +950,7 @@ Concepts:
 Query:
 
 Select id,count(*) as num  from ( 
-Select requester_id as id
-from RequestAccepted
-union all
+Select requester_id as id from RequestAccepted union all
 
 Select accepter_id from RequestAccepted) t
 group by id
@@ -987,8 +984,7 @@ Where tiv_2015 in (Select tiv_2015 from Insurance
 group by tiv_2015
 having count(*) > 1
 )
-and (lat, lon) in (Select lat, lon
-From Insurance
+and (lat, lon) in (Select lat, lon From Insurance
 Group by lat, lon
 Having count(*) = 1
 );
@@ -1072,8 +1068,7 @@ Concepts:
 
 Query:
 
-Select patient_id,patient_name,conditions
-from Patients
+Select patient_id,patient_name,conditions from Patients
 where conditions like 'DIAB1%' or conditions like '% DIAB1%';
 
 Learning:
