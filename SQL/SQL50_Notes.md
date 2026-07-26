@@ -335,8 +335,7 @@ When a question asks for an average value, use AVG() instead of manually dividin
 Query Logic:
 
 Select contest_id,round(count(user_id) * 100.0 /(select count(*) from Users), 2) as percentage
-from Register
-group by contest_id
+from Register group by contest_id
 order by percentage desc, contest_id asc
 
 ### Learning
@@ -356,8 +355,7 @@ order by percentage desc, contest_id asc
 
 Select query_name,round(avg(cast(rating as decimal) / position), 2) as quality,
 round(avg(case when rating < 3 then 1.0 else 0 END) * 100, 2) as poor_query_percentage
-from Queries
-group by query_name;
+from Queries group by query_name;
 
 ### Learning
 
@@ -375,8 +373,7 @@ country,count(*) as trans_count,
 sum(state = 'approved') as approved_count,
 sum(amount) as trans_total_amount,
 sum(case when state = 'approved' then amount else 0 END) as approved_total_amount
-from Transactions
-group by left(trans_date, 7),country;
+from Transactions group by left(trans_date, 7),country;
 
 💡 Approach:
 
