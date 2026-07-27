@@ -195,8 +195,7 @@ Concepts:
 Query:
 
 Select s.student_id,s.student_name,sub.subject_name,count(e.student_id) as attended_exams 
-from Students s
-cross join Subjects sub
+from Students s cross join Subjects sub
 left join Examinations e on s.student_id=e.student_id 
 and sub.subject_name=e.subject_name
 group by s.student_id,s.student_name,sub.subject_name
@@ -219,8 +218,7 @@ Concepts:
 Query:
 
 Select e1.name from Employee e1
-join Employee e2
-on e1.id=e2.managerId
+join Employee e2 on e1.id=e2.managerId
 group by e1.id
 having count(*) >= 5;
 
@@ -244,8 +242,7 @@ Query:
 Select sig.user_id,
 round(avg(case when action = 'confirmed' then 1 else 0 end),2) as confirmation_rate
 from Signups sig
-left join Confirmations con
-on sig.user_id = con.user_id
+left join Confirmations con on sig.user_id = con.user_id
 group by sig.user_id
 
 Learning:
