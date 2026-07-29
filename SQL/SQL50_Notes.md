@@ -1184,7 +1184,7 @@ Query:
 Select * from Users
 where REGEXP_LIKE(
 mail, '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\\.com$', 'c');
-
+ 
 Learning:
 * ^ ensures the email starts at the beginning of the string.
 * [A-Za-z] ensures the first character is a letter.
