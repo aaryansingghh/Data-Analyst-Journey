@@ -729,8 +729,7 @@ Select product_id,new_price as price from Products
 where (product_id, change_date) in (Select product_id,max(change_date)
 from Products where change_date <= '2019-08-16'
 group by product_id)
-union Select product_id,10 as price
-from Products
+union Select product_id,10 as price from Products
 group by product_id
 having min(change_date) > '2019-08-16';
 
@@ -755,8 +754,7 @@ Concepts:
 Query:
 Select person_name
 from (Select person_name,sum(weight) over (order by turn) as total_weight
-from Queue) t
-where total_weight <= 1000
+from Queue) t where total_weight <= 1000
 order by total_weight desc
 limit 1;
 
@@ -779,11 +777,9 @@ Query:
 
 Select 'Low Salary' as category,
 count(case when income < 20000 then 1 end) as accounts_count 
-from Accounts
-union all Select 'Average Salary',
+from Accounts union all Select 'Average Salary',
 count(case when income between 20000 and 50000 then 1 end)
-from Accounts
-union all Select 'High Salary',
+from Accounts union all Select 'High Salary',
 count(case when income > 50000 then 1 end)
 from Accounts;
 
@@ -805,8 +801,7 @@ Concepts:
 Query:
 
 Select employee_id from Employees
-where salary < 30000
-and manager_id is not null
+where salary < 30000 and manager_id is not null
 and manager_id not in (Select employee_id from Employees)
 order by employee_id
 
